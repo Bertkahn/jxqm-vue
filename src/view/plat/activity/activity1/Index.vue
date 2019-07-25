@@ -4,6 +4,7 @@
         <SunTable :load="(that) => { table.el = that }" :data="table.data">
             <!--<el-button v-show="auth.add" @click="showAdd = true" type="primary">添加管理员</el-button>-->
             <div slot="status" slot-scope="data">{{data.row.status | formatStatus}}</div>
+            <div slot="birthDay" slot-scope="data">{{data.row.birthDay | formatBirthDay}}</div>
             <div slot="sex" slot-scope="data">{{data.row.sex == 1 ? '男' : '女'}}</div>
             <div slot="opreate" slot-scope="data">
                 <el-button type="text" size="mini" @click="look(data.row)">查看</el-button>
@@ -14,7 +15,7 @@
             </div>
         </SunTable>
         <!--edit-->
-        <ImgList :url="url" :show="showList" :callBack="(flag)=>{showList = false;}" :imgList="imgList"></ImgList>
+        <ImgList :show="showList" :callBack="(flag)=>{showList = false;}" :imgList="imgList"></ImgList>
     </Page>
 </template>
 
@@ -49,7 +50,7 @@
                                 key: 'trueName',
                                 search:{
                                     type: 'text',
-                                    symbol: '='
+                                    symbol: 'like'
                                 }
                             },
                             {
@@ -58,7 +59,7 @@
                             },
                             {
                                 title: '生日',
-                                key: 'birthDay'
+                                key: 'birthDay',
                             },
                             {
                                 title: '城市',
@@ -121,8 +122,17 @@
                     return '拒绝';
                 }
                 return '待审核';
-            }
-        }
+            },
+            // formatBirthDay (birthDay) {
+            //     if (birthDay == 719) {
+            //         return birthDay.substr(0,1)+'-'+birthDay.substr(1,3);
+            //     }
+            //     if (birthDay.toString().length == 4) {
+            //         return birthDay.substr(0,2)+'-'+birthDay.substr(2,4);
+            //     }
+            // },
+        },
+
     }
 </script>
 

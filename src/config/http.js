@@ -36,6 +36,7 @@ global.Http = {
         getActivity1UserPage: '/activity/admin/activity1/getActivityUserPage',
         getActivity1UserImgList: '/activity/admin/activity1/getActivityUserImgList',
         verifyActivity1User: '/activity/admin/activity1/verifyActivityUser',
+        getActivityPage: '/activity/admin/activity/plat/getActivityPage',
     },
     inst: {
 

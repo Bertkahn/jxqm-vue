@@ -12,8 +12,6 @@
     export default {
         data() {
             return {
-                form: {},
-                groupList: []
             }
         },
         methods: {

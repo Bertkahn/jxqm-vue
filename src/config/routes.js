@@ -57,7 +57,12 @@ export default [
                 component: resolve => require(['../view/plat/activity/activity1/Index.vue'], resolve),
                 meta: { title: '活动1' }
             },
-
+            {
+                // jiang
+                path: '/plat/activity/activityList',
+                component: resolve => require(['../view/plat/activity/activityList/activityList.vue'], resolve),
+                meta: { title: '活动列表' }
+            },
             /*********************  Test  **********************************/
             {
                 path: '/test',
