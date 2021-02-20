@@ -139,13 +139,13 @@
         },
         filters: {
             formatStatus(status) {
-                if (status == 1) {
+                if (status === 1) {
                     return '正常'
                 }
-                if (status == 2) {
+                if (status === 2) {
                     return '离职'
                 }
-                if (status == 3) {
+                if (status === 3) {
                     return '关闭'
                 }
             },

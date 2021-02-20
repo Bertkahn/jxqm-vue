@@ -1,6 +1,9 @@
 global.Http = {
     common: {
         getMyCustomerPage: '/user/admin/user/getMyCustomerPage',
+        addMyUser:'/user/admin/user/addMyUser',
+        updateMyUser:'/user/admin/user/updateMyUser',
+        delMyUser:'/user/admin/user/delMyUser',
         //  todo
         login: '/admin/admin/admin/common/login',
         changePassword: '/admin/admin/admin/common/changePassword',
@@ -12,7 +15,7 @@ global.Http = {
         addAdmin: '/admin/admin/admin/master/addAdmin',
         editAdmin: '/admin/admin/admin/master/editAdmin',
         delAdmin: '/admin/admin/admin/master/delAdmin',
-        getAuthGroupList: '/admin/auth/master/getAuthGroupList',
+        getAuthGroupList: '/admin/admin/auth/master/getAuthGroupList',
 
         getAuthPage: '/admin/admin/auth/master/getAuthPage',
         addAuth: '/admin/admin/auth/master/addAuth',
@@ -33,10 +36,15 @@ global.Http = {
         getSelectMenuTreeList: '/admin/admin/auth/master/getSelectMenuTreeList',
     },
     plat: {
+        getMyCustomerPage:'user/admin/user/getMyCustomerPage',
+        addMyUser:'user/admin/user/addMyUser',
         getActivity1UserPage: '/activity/admin/activity1/getActivityUserPage',
         getActivity1UserImgList: '/activity/admin/activity1/getActivityUserImgList',
         verifyActivity1User: '/activity/admin/activity1/verifyActivityUser',
         getActivityPage: '/activity/admin/activity/plat/getActivityPage',
+        getActivityFiles: '/activity/admin/activityFiles/getActivityFiles',
+        editActivityFiles: '/activity/admin/activityFiles/editActivityFiles',
+        insertActivityFiles: '/activity/admin/activityFiles/insertActivityFiles',
     },
     inst: {
 

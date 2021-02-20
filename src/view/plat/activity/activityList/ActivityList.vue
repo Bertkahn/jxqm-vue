@@ -8,7 +8,7 @@
             <div slot="startTime" slot-scope="data">{{data.row.startTime | formatDay}}</div>
             <div slot="endTime" slot-scope="data">{{data.row.endTime | formatDay}}</div>
             <div slot="opreate" slot-scope="data">
-                <el-button type="text" size="mini" @click="infomation(data.row)">资料</el-button>
+                <el-button type="text" size="mini" @click="lookFiles(data.row.id)">资料</el-button>
                 <el-button type="text" size="mini" @click="look(data.row)">查看</el-button>
 <!--                <el-button v-show="auth.verify" type="text" size="mini" @click="verify(data.row, 1)">通过</el-button>-->
 <!--                <el-button class="opreate-del" v-show="auth.verify" type="text" size="mini" @click="verify(data.row, 2)">拒绝</el-button>-->
@@ -17,24 +17,26 @@
             </div>
         </SunTable>
         <!--edit-->
-        <activityInfomation :show="showList" :callBack="(flag)=>{showList = false;}" :activityInfomation="activityInfomation"></activityInfomation>
+        <ActivityFiles :show="showList" :activityId="activityId" :callBack="(flag)=>{flag? lookFiles(flag) : showList = false;}" :file-list="fileList"></ActivityFiles>
     </Page>
 </template>
 
 <script>
     import {formatDay} from "../../../../js/util";
-    import ActivityInfomation from './ActivityInfomation';
+    import ActivityFiles from './ActivityFiles';
     const url = {
         table: Http.plat.getActivityPage,
-        activityInfomation: Http.plat.getActivityFiles
+        activityFiles: Http.plat.getActivityFiles
     };
     export default {
+        components: {ActivityFiles},
         extends: Sun.vuePage,
         data() {
             return {
-                url: url.table,
+                url: url,
                 showList: false,
-                activityInfomation: [],
+                activityId: 0,
+                fileList: [],
                 table: {
                     el: null,
                     data: {
@@ -104,13 +106,14 @@
             look () {
                 Sun.push('/plat/activity/activity1');
             },
-            infomation (Data){
+            lookFiles (id){
                 Sun.post({
-                    url: url.activityInfomation,
-                    data: {activityId: '1'},
+                    url: url.activityFiles,
+                    data: {activityId: id},
                     loading: true,
                     success: (data) => {
-                        this.activityInfomation = data;
+                        this.activityId = id;
+                        this.fileList = data;
                         this.showList = true;
                     }
                 });

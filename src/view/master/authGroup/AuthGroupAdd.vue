@@ -12,31 +12,31 @@
                 </el-select>
             </el-form-item>
             <el-form-item label="权限">
-                <div v-if="form.authType == 1" style="text-align: center">超级权限</div>
+                <div v-if="form.authType === 1" style="text-align: center">超级权限</div>
                 <el-form-item v-for="(auth, index) in authList" :key="index" :label="auth.name + '：'">
                     <el-checkbox-group v-model="auth.checkList">
-                        <el-checkbox :disabled="!auth.num || auth.num % 1 != 0" :checked="checked" @change="checked=!checked" :label="1">查看</el-checkbox>
-                        <el-checkbox :disabled="!auth.num || auth.num % 2 != 0" :checked="checked" @change="checked=!checked" :label="2">添加</el-checkbox>
-                        <el-checkbox :disabled="!auth.num || auth.num % 3 != 0" :checked="checked" @change="checked=!checked" :label="3">编辑</el-checkbox>
-                        <el-checkbox :disabled="!auth.num || auth.num % 5 != 0" :checked="checked" @change="checked=!checked" :label="5" >删除</el-checkbox>
+                        <el-checkbox :disabled="!auth.num || auth.num % 1 !== 0" :checked="checked" @change="checked=!checked" :label="1">查看</el-checkbox>
+                        <el-checkbox :disabled="!auth.num || auth.num % 2 !== 0" :checked="checked" @change="checked=!checked" :label="2">添加</el-checkbox>
+                        <el-checkbox :disabled="!auth.num || auth.num % 3 !== 0" :checked="checked" @change="checked=!checked" :label="3">编辑</el-checkbox>
+                        <el-checkbox :disabled="!auth.num || auth.num % 5 !== 0" :checked="checked" @change="checked=!checked" :label="5" >删除</el-checkbox>
                     </el-checkbox-group>
                 </el-form-item>
                 <div v-if="platAuthList.length" style="text-align: center">集团权限</div>
                 <el-form-item v-for="(auth, index) in platAuthList" :key="'plat' + index" :label="auth.name + '：'">
                     <el-checkbox-group v-model="auth.checkList">
-                        <el-checkbox :disabled="!auth.num || auth.num % 1 != 0" :checked="checked" @change="checked=!checked" :label="1">查看</el-checkbox>
-                        <el-checkbox :disabled="!auth.num || auth.num % 2 != 0" :checked="checked" @change="checked=!checked" :label="2">添加</el-checkbox>
-                        <el-checkbox :disabled="!auth.num || auth.num % 3 != 0" :checked="checked" @change="checked=!checked" :label="3">编辑</el-checkbox>
-                        <el-checkbox :disabled="!auth.num || auth.num % 5 != 0" :checked="checked" @change="checked=!checked" :label="5" >删除</el-checkbox>
+                        <el-checkbox :disabled="!auth.num || auth.num % 1 !== 0" :checked="checked" @change="checked=!checked" :label="1">查看</el-checkbox>
+                        <el-checkbox :disabled="!auth.num || auth.num % 2 !== 0" :checked="checked" @change="checked=!checked" :label="2">添加</el-checkbox>
+                        <el-checkbox :disabled="!auth.num || auth.num % 3 !== 0" :checked="checked" @change="checked=!checked" :label="3">编辑</el-checkbox>
+                        <el-checkbox :disabled="!auth.num || auth.num % 5 !== 0" :checked="checked" @change="checked=!checked" :label="5" >删除</el-checkbox>
                     </el-checkbox-group>
                 </el-form-item>
                 <div v-if="instAuthList.length" style="text-align: center">公司权限</div>
                 <el-form-item v-for="(auth, index) in instAuthList" :key="'inst' + index" :label="auth.name + '：'">
                     <el-checkbox-group v-model="auth.checkList">
-                        <el-checkbox :disabled="!auth.num || auth.num % 1 != 0" :checked="checked" @change="checked=!checked" :label="1">查看</el-checkbox>
-                        <el-checkbox :disabled="!auth.num || auth.num % 2 != 0" :checked="checked" @change="checked=!checked" :label="2">添加</el-checkbox>
-                        <el-checkbox :disabled="!auth.num || auth.num % 3 != 0" :checked="checked" @change="checked=!checked" :label="3">编辑</el-checkbox>
-                        <el-checkbox :disabled="!auth.num || auth.num % 5 != 0" :checked="checked" @change="checked=!checked" :label="5" >删除</el-checkbox>
+                        <el-checkbox :disabled="!auth.num || auth.num % 1 !== 0" :checked="checked" @change="checked=!checked" :label="1">查看</el-checkbox>
+                        <el-checkbox :disabled="!auth.num || auth.num % 2 !== 0" :checked="checked" @change="checked=!checked" :label="2">添加</el-checkbox>
+                        <el-checkbox :disabled="!auth.num || auth.num % 3 !== 0" :checked="checked" @change="checked=!checked" :label="3">编辑</el-checkbox>
+                        <el-checkbox :disabled="!auth.num || auth.num % 5 !== 0" :checked="checked" @change="checked=!checked" :label="5" >删除</el-checkbox>
                     </el-checkbox-group>
                 </el-form-item>
             </el-form-item>
@@ -96,7 +96,7 @@
                 this.postUrl(value, (data) => {
                     this.authList = data;
                 });
-                if (value == 1) {
+                if (value === 1) {
                     this.postUrl(2, (data) => {
                         this.platAuthList = data;
                     });
@@ -118,7 +118,7 @@
                         auth.checkList.forEach((item) => {
                             num *= item;
                         });
-                        if (rules == '')
+                        if (rules === '')
                             rules = auth.alias + num;
                         else
                             rules = rules + ',' + auth.alias + num;
@@ -130,7 +130,7 @@
                         auth.checkList.forEach((item) => {
                             num *= item;
                         });
-                        if (rules == '')
+                        if (rules === '')
                             rules = auth.alias + num;
                         else
                             rules = rules + ',' + auth.alias + num;
@@ -142,7 +142,7 @@
                         auth.checkList.forEach((item) => {
                             num *= item;
                         });
-                        if (rules == '')
+                        if (rules === '')
                             rules = auth.alias + num;
                         else
                             rules = rules + ',' + auth.alias + num;

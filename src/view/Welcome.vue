@@ -1,12 +1,12 @@
 <template>
     <div class="all">
         <img class="logo" :src="logo" alt="">
-        <p class="title">欢迎来到愫美科技!</p>
+        <p class="title">匠心汽美</p>
     </div>
 </template>
 
 <script>
-    import img_logo from '../assets/logo.png';
+    import img_logo from '../assets/jiangxin.jpg';
     export default {
         name: 'welcome',
         data() {

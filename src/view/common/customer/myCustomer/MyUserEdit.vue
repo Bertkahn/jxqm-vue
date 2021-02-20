@@ -1,19 +1,22 @@
 <template>
     <el-dialog title="添加" :visible.sync="show" @open="open" :before-close="close" top="12vh" width="600px">
         <el-form class="el-form-add" ref="form" :model="form" label-width="100px">
+            <el-form-item label="用户昵称">
+                <el-input v-model="form.nickName"></el-input>
+            </el-form-item>
             <el-form-item label="真实姓名">
                 <el-input v-model="form.trueName"></el-input>
             </el-form-item>
             <el-form-item label="手机号">
                 <el-input v-model="form.phone"></el-input>
             </el-form-item>
-            <el-form-item label="初始密码">
-                <el-input v-model="form.password"></el-input>
+            <el-form-item label="年龄">
+                <el-input v-model="form.age"></el-input>
             </el-form-item>
-            <el-form-item label="权限组">
-                <el-select v-model="form.groupId" filterable placeholder="请选择">
-                    <el-option v-for="(item, index) in groupList" :key="index" :label="item.name"
-                               :value="item.id"></el-option>
+            <el-form-item label="性别">
+                <el-select v-model="form.sex" filterable placeholder="请选择">
+                    <el-option label="女" :value="0"></el-option>
+                    <el-option label="男" :value="1"></el-option>
                 </el-select>
             </el-form-item>
         </el-form>
@@ -26,6 +29,8 @@
 </template>
 
 <script>
+    import {copyMap} from "../../../../js/util";
+
     export default {
         data() {
             return {
@@ -35,16 +40,7 @@
         },
         methods: {
             open () {
-                this.form = {
-                    password: '111111'
-                };
-                Sun.post({
-                    url: Http.master.getAuthGroupList,
-                    success: (data) => {
-                        this.groupList = data;
-                        this.groupList.unshift({id: 0, name: '无'});
-                    }
-                });
+                this.form = copyMap(this.data);
             },
             close () {
                 if (this.callBack) {
@@ -60,12 +56,8 @@
                     Sun.showError('请输入手机号');
                     return;
                 }
-                if (!this.form.password || this.form.password.length < 6 || this.form.password.length > 16) {
-                    Sun.showError('请输入6-16位密码');
-                    return;
-                }
                 Sun.post({
-                    url: this.url.add,
+                    url: this.url.edit,
                     data: this.form,
                     success: () => {
                         if (this.callBack) {
@@ -75,7 +67,7 @@
                 });
             }
         },
-        props: ['url', 'show', 'callBack'],
+        props: ['data', 'url', 'show', 'callBack'],
     }
 </script>
 

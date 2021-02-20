@@ -25,13 +25,13 @@ export default [
             {
                 // sun
                 path: '/common/customer/myCustomer',
-                component: resolve => require(['../view/common/customer/myCustomer/Index.vue'], resolve),
+                component: resolve => require(['../view/common/customer/myCustomer/MyUser.vue'], resolve),
                 meta: { title: '我的客户' }
             },
             /*********************  Master  **********************************/
             // todo all
             {
-                path: '/master/admin/masterAdmin',
+                path: '/master/admin/admin',
                 component: resolve => require(['../view/master/admin/MasterAdmin.vue'], resolve),
                 meta: { title: '超级管理员' }
             },
